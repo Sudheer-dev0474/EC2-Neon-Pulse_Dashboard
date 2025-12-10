@@ -1,10 +1,10 @@
 FROM python:3.14-slim AS build
 ADD . /app
 WORKDIR /app
-RUN pip install -r requirements.txt
+RUN pip install --prefix=data -r requirements.txt
 
 FROM python:3.14-slim AS runtime
-COPY --from=build /app /newcodepython
+COPY --from=build /app/data /newcodepython
 LABEL project=python
 LABEL env=prod
 WORKDIR /newcodepython
