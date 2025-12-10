@@ -6,6 +6,8 @@ RUN pip install --prefix=data -r requirements.txt
 FROM python:3.14-slim AS runtime
 COPY --from=build /app/data /newcodepython
 LABEL project=python
+LABEL author=teamdevops
 LABEL env=prod
 WORKDIR /newcodepython
 CMD ["python", "app.py"]
+
